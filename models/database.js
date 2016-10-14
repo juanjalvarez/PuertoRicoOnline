@@ -1,13 +1,7 @@
 var mongoose = require('mongoose');
 var fs = require('fs');
 
-var dbString = '';
-fs.readFile('.dbconn', 'utf8', function(err, data){
-	if(err)
-		console.log(err);
-	else
-		dbString += data;
-});
+var dbString = fs.readFileSync('.dbconn', 'utf8').replace('\n', '');
 
 mongoose.connect(dbString);
 
@@ -31,14 +25,14 @@ var userSchema = mongoose.Schema({
 	facebook: String
 });
 
-var User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 var groupSchema = mongoose.Schema({
 	id: mongoose.Schema.Types.ObjectId,
 	name: String
 });
 
-var Group = mongoose.model('Group', groupSchema);
+const Group = mongoose.model('Group', groupSchema);
 
 var groupsubSchema = mongoose.Schema({
 	groupid: {
@@ -50,6 +44,8 @@ var groupsubSchema = mongoose.Schema({
 		ref: 'User'
 	}
 });
+
+const GroupSub = mongoose.model('GroupSub', groupsubSchema);
 
 var commentSchema = mongoose.Schema({
 	id: {
@@ -64,4 +60,4 @@ var commentSchema = mongoose.Schema({
 	comment: String
 });
 
-var Comment = mongoose.model('Comment', commentSchema);
+const Comment = mongoose.model('Comment', commentSchema);
