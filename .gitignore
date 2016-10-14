@@ -1,3 +1,5 @@
+.dbconn
+
 # Logs
 logs
 *.log
