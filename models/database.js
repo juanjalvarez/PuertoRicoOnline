@@ -28,13 +28,10 @@ var userSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	facebook: {
-		type: String,
-		default: 'VOID'
-	},
+	facebook: String,
 	img: {
 		type: String,
-		default: 'https://qph.ec.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013-c?convert_to_webp=true'
+		default: 'https://leafii.com/images/defaultProfilePic.png'
 	}
 });
 

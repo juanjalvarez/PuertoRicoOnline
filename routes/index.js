@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../models/database');
 
 router.get('/', function(req, res, next) {
-  res.render('home', {title: 'Express Title'});
+  res.render('home');
 });
 
 router.get('/t', function(req, res, next){
