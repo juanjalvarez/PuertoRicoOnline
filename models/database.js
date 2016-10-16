@@ -18,46 +18,72 @@ db.once('open', function(stat){
 });
 
 var userSchema = mongoose.Schema({
-	userid: mongoose.Schema.Types.ObjectId,
-	username: String,
+	username: {
+		type: String,
+		unique: true,
+		required: true
+	},
 	name: String,
-	password: String,
-	facebook: String
+	password: {
+		type: String,
+		required: true
+	},
+	facebook: {
+		type: String,
+		default: 'VOID'
+	},
+	img: {
+		type: String,
+		default: 'https://qph.ec.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013-c?convert_to_webp=true'
+	}
 });
 
 const User = mongoose.model('User', userSchema);
+module.exports.User = User;
 
 var groupSchema = mongoose.Schema({
-	id: mongoose.Schema.Types.ObjectId,
-	name: String
+	name: {
+		type: String,
+		required: true
+	}
 });
 
 const Group = mongoose.model('Group', groupSchema);
+module.exports.Group = Group;
 
 var groupsubSchema = mongoose.Schema({
-	groupid: {
+	group: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Group'
+		ref: 'Group',
+		required: true
 	},
-	userid: {
+	user: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User'
+		ref: 'User',
+		required: true
 	}
 });
 
 const GroupSub = mongoose.model('GroupSub', groupsubSchema);
+module.exports.GroupSub = GroupSub;
 
 var commentSchema = mongoose.Schema({
-	id: {
+	author: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User'
+		ref: 'User',
+		required: true
 	},
-	groupid:{
+	group:{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Group'
+		ref: 'Group',
+		required: true
 	},
-	datetime: Date,
-	comment: String
+	datetime: {
+		type: Date,
+		default: Date.now
+	},
+	text: String
 });
 
 const Comment = mongoose.model('Comment', commentSchema);
+module.exports.Comment = Comment;

@@ -4,6 +4,7 @@ user
 	name
 	password
 	facebook
+	img
 
 group
 	id

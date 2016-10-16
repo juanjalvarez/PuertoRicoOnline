@@ -17,6 +17,7 @@
     "express-handlebars":"*",
     "socket.io":"*",
     "mongodb": "*",
-    "mongoose":"*"
+    "mongoose":"*",
+		"sync":"*"
   }
 }
