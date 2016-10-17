@@ -5,3 +5,12 @@
 		<br>
 	{{/each}}
 </div>
+
+{{#if auth}}
+	<div class="">
+		<form class="" action="/test/createcomment" method="post">
+			<input type="text" name="text" value="">
+			<input type="submit" name="submit" value="Send">
+		</form>
+	</div>
+{{/if}}

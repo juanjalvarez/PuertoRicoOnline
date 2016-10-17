@@ -14,6 +14,41 @@ router.get('/commenttest', function(req, res, next){
 	});
 });
 
+router.post('/createcomment', function(req, res, next){
+	db.Group.findOne({}, function(err, g){
+		if(err){
+			console.log(err);
+			res.render('redirect', {
+				auth: req.session.auth,
+				title: 'Could not create new comment',
+				url: '/commenttest'
+			});
+			return;
+		}
+		var newComment = new db.Comment({
+			author: req.session.auth._id,
+			group: g._id,
+			text: req.body.text
+		});
+		newComment.save(function(err){
+			if(err){
+				console.log(err);
+				res.render('redirect', {
+					auth: req.session.auth,
+					title: 'Could not create new comment',
+					url: '/commenttest'
+				});
+				return;
+			}
+		});
+		res.render('redirect',{
+			auth: req.session.auth,
+			title: 'Successfully created a new comment',
+			url: '/commenttest'
+		});
+	});
+});
+
 router.get('/cookietest', function(req, res, next){
 	if(!req.session.views)
 		req.session.views = 0;
