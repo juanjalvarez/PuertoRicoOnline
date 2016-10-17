@@ -38,6 +38,14 @@
 	            <li><a href="/login">Log in</a></li>
 		          <li><a href="/register">Register</a></li>
 						{{else}}
+							<li>
+								Hello,
+								{{#if auth.name}}
+									{{auth.name}}
+								{{else}}
+									{{auth.username}}
+								{{/if}}
+							</li>
 							<li><a href="/logout">Logout</a></li>
 						{{/unless}}
           </ul>

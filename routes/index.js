@@ -64,6 +64,7 @@ router.post('/register', function(req, res, next){
 		if(err)
 			console.log(err);
 	});
+	req.session.auth = newUser;
 	res.render('redirect', {
 		title: 'Successfully registered',
 		auth: req.session.auth
