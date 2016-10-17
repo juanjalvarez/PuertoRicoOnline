@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var db = require('./models/database');
 var fs = require('fs');
+var session = require('express-session');
 
 var hbs = exphbs.create({
   defaultLayout: 'main'
@@ -27,14 +28,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// setup sessions
+app.use(session({
+	secret: 'secret123',
+	cookie: {
+		maxAge: 3600000
+	},
+	resave: true,
+	saveUninitialized: false
+}));
+
 var index = require('./routes/index');
 app.use('/', index);
 
 var user = require('./routes/user');
 app.use('/user', user);
-
-var register = require('./routes/register');
-app.use('/register', register);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
