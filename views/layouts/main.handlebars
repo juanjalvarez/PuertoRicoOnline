@@ -19,39 +19,31 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">PR Online</a>
+          <a class="navbar-brand" href="/">PR Online</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="/register">Register</a></li>
             <li><a href="/user">User</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Test<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Acount</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="/test/commenttest">Comment Test</a></li>
+	              <li><a href="/test/cookietest">Cookie Test</a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/login">Log in</a></li>
-            <!-- <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li> -->
+						{{#unless auth}}
+	            <li><a href="/login">Log in</a></li>
+		          <li><a href="/register">Register</a></li>
+						{{else}}
+							<li><a href="/logout">Logout</a></li>
+						{{/unless}}
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
-		<div class="navbar">
-			<a href="/">Home</a>
-			<a href="/register">Register</a>
-			<a href="/user">User</a>
-			<a href="/commenttest">Comment Test</a>
-		</div>
 		<div class="content">
     	{{{body}}}
 		</div>

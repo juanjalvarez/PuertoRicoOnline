@@ -44,6 +44,9 @@ app.use('/', index);
 var user = require('./routes/user');
 app.use('/user', user);
 
+var test = require('./routes/test');
+app.use('/test', test);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
