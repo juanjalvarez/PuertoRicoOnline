@@ -1,7 +1,11 @@
 <div class="">
-	<form class="registerForm" action="/register" method="post">
+	<script src="/js/registrationvalidator.js" charset="utf-8"></script>
+	<form name="register" class="registerForm" action="/register" method="post" onsubmit="return validate()">
 		<div class="">
 			Username:	<input type="text" name="username" value="">
+		</div>
+		<div class="">
+			Real name: <input type="text" name="name" value="">
 		</div>
 		<div class="">
 			Password: <input type="password" name="password" value="">

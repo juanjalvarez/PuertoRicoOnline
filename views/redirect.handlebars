@@ -1,10 +1,16 @@
 <script type="text/javascript">
 	var url = "{{url}}";
+	if(!url)
+		url = '/';
 </script>
 <script src="/js/redirect.js" charset="utf-8"></script>
 <h1>
-	{{title}}
+	{{#if title}}
+		{{title}}
+	{{/if}}
 </h1>
 <p>
-	{{content}}
+	{{#if content}}
+		{{content}}
+	{{/if}}
 </p>

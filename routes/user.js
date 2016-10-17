@@ -3,7 +3,11 @@ var router = express.Router();
 var db = require('../models/database');
 
 router.get('/', function(req, res, next){
-	res.send('UNDER CONSTRUCTION');
+	db.User.find({}).exec(function(err, users){
+		res.render('userlist', {
+			userList: users
+		});
+	});
 });
 
 router.get('/:user', function(req, res, next) {

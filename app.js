@@ -24,7 +24,7 @@ app.use(favicon(path.join(__dirname, 'public', '/images/fav.ico')));
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 var index = require('./routes/index');
@@ -32,6 +32,9 @@ app.use('/', index);
 
 var user = require('./routes/user');
 app.use('/user', user);
+
+var register = require('./routes/register');
+app.use('/register', register);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -54,7 +54,8 @@ sync(function(){
 
 	var groupList = [
 		new db.Group({
-			name: 'Group #1'
+			name: 'Group #1',
+			exclusive: false
 		})
 	];
 	groupList.forEach(function(g){

@@ -17,16 +17,4 @@ router.get('/t', function(req, res, next){
 	});
 });
 
-router.get('/register', function(req, res, next){
-	res.render('register', {});
-});
-
-router.post('/register', function(req, res, next){
-	res.render('redirect', {
-		title: 'Successfully registered!',
-		content: req.param('username') + " : " + req.param('password'),
-		url: '/'
-	});
-});
-
 module.exports = router;

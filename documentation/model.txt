@@ -9,6 +9,7 @@ user
 group
 	id
 	name
+	exclusive
 
 groupsub
 	groupid
