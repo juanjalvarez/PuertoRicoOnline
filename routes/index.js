@@ -6,6 +6,10 @@ router.get('/', function(req, res, next) {
   res.render('home', {auth:req.session.auth});
 });
 
+router.get('/about', function(req, res, next){
+	res.render('about', {auth:req.session.auth});
+});
+
 router.get('/login', function(req, res, next){
 	res.render('login', {auth:req.session.auth});
 });
