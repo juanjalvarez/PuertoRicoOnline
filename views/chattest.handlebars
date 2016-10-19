@@ -1,0 +1,37 @@
+<script src="/js/socket.io.js" charset="utf-8"></script>
+<div class="container-fluid">
+	<div class="col-xs-2 chat-group-list">
+
+	</div>
+	<div class="col-xs-10">
+		<div class="">
+			<ul id="chatView" class="chat-view">
+			</ul>
+		</div>
+	  <div class="navbar-fixed-bottom chat-form">
+			<div class="col-xs-11">
+		  	<input id="sendMessage" type="text" class="form-control" placeholder="Write here.">
+			</div>
+			<div class="col-xs-1">
+				<button id="sendButton" type="button">Send</button>
+			</div>
+	  </div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+	var socket = io();
+
+	socket.on('r', function(data){
+		$('#chatView').append("<li>" + data + "</li>");
+	});
+
+	$('#sendButton').click(function(){
+		socket.emit('message', $('#sendMessage').val());
+		$('#chatView').append("<li>" + $('#sendMessage').val() + "</li>");
+		console.log('sending message ' + $('#sendMessage').val());
+		return false;
+	});
+</script>

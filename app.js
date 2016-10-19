@@ -7,7 +7,19 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var db = require('./models/database');
 var fs = require('fs');
-var session = require('express-session');
+var mongoose = require('mongoose');
+var express_session = require('express-session');
+var session = express_session({
+	//store: require('mongoose-session')(mongoose),
+	secret: 'jf902jf9723douhSLPe9g87fy8o3774gkljh8932q74hf08q34hgjkdfhg',
+	cookie: {
+		maxAge: 3600000
+	},
+	resave: true,
+	saveUninitialized: false
+});
+
+module.exports.session = session;
 
 var hbs = exphbs.create({
   defaultLayout: 'main'
@@ -29,14 +41,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // setup sessions
-app.use(session({
-	secret: 'secret123',
-	cookie: {
-		maxAge: 3600000
-	},
-	resave: true,
-	saveUninitialized: false
-}));
+console.log('Initializing session');
+app.use(session);
 
 var index = require('./routes/index');
 app.use('/', index);

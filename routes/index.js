@@ -17,7 +17,6 @@ router.get('/login', function(req, res, next){
 router.post('/login', function(req, res, next){
 	var un = req.body.username;
 	var pw = req.body.password;
-	console.log(un + ' ' + pw);
 	db.User.findOne({'username':un}, function(err, usr){
 		if(usr){
 			req.session.auth = usr;
