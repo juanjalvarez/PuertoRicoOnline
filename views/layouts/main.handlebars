@@ -41,12 +41,14 @@
 		          <li><a href="/register">Register</a></li>
 						{{else}}
 							<li>
-								Hello,
-								{{#if auth.name}}
-									{{auth.name}}
-								{{else}}
-									{{auth.username}}
-								{{/if}}
+								<p class="navbar-text">
+									Hello, 
+									{{#if auth.name}}
+										{{auth.name}}
+									{{else}}
+										{{auth.username}}
+									{{/if}}
+								</p>
 							</li>
 							<li><a href="/logout">Logout</a></li>
 						{{/unless}}
