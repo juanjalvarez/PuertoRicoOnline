@@ -4,13 +4,26 @@
 		url = '/';
 </script>
 <script src="/js/redirect.js" charset="utf-8"></script>
-<h1>
-	{{#if title}}
-		{{title}}
-	{{/if}}
-</h1>
-<p>
-	{{#if content}}
-		{{content}}
-	{{/if}}
-</p>
+
+<div class="content-fluid">
+	<div class="row">
+	  <div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			{{#if title}}
+				<h1>
+					{{title}}
+				</h1>
+			{{/if}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+		  {{#if content}}
+				<p>
+					{{content}}
+				</p>
+			{{/if}}
+		</div>
+	</div>
+</div>

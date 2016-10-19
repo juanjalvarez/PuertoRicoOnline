@@ -2,6 +2,15 @@ var express = require('express');
 var router = express.Router();
 var db = require('../models/database');
 
+function redirect(req, res, _title, _content, _url){
+	res.render('redirect', {
+		title: _title,
+		content: _content,
+		url: _url,
+		auth: req.session.auth
+	});
+}
+
 router.get('/', function(req, res, next) {
   res.render('home', {auth:req.session.auth});
 });
@@ -18,29 +27,17 @@ router.post('/login', function(req, res, next){
 	var un = req.body.username;
 	var pw = req.body.password;
 	db.User.findOne({'username':un}, function(err, usr){
-		if(usr){
+		if(usr && pw === usr.password){
 			req.session.auth = usr;
-			res.render('redirect', {
-				title: 'Successfully logged in!',
-				auth:req.session.auth
-			});
-		}else{
-			res.render('redirect', {
-				title: 'Failed to log in!',
-				content: 'Wrong username or password',
-				url: '/login',
-				auth: req.session.auth
-			});
-		}
+			redirect(req, res, 'Successfully logged in!', null, null);
+		}else
+			redirect(req, res, 'Failed to log in!', 'Wrong username or password', '/login');
 	});
 });
 
 router.get('/logout', function(req, res, next){
 	req.session.auth = null;
-	res.render('redirect', {
-		title: 'Successfully logged out!',
-		auth: req.session.auth
-	});
+	redirect(req, res, 'Successfully logged out!', null, null);
 });
 
 router.get('/register', function(req, res, next){
@@ -51,11 +48,7 @@ router.post('/register', function(req, res, next){
 	var un = req.body.username;
 	var existingUser = db.User.findOne({'username':un});
 	if(existingUser.length > 0){
-		res.render('redirect', {
-			title: 'Could not register!',
-			content: 'A user with the same username already exists',
-			auth: req.session.auth
-		});
+		redirect(req, res, 'Failed to register!', 'A user with the username \'' + un + '\' already exists.', '/register');
 		return;
 	}
 	var newUser = new db.User({
@@ -68,10 +61,7 @@ router.post('/register', function(req, res, next){
 			console.log(err);
 	});
 	req.session.auth = newUser;
-	res.render('redirect', {
-		title: 'Successfully registered',
-		auth: req.session.auth
-	});
+	redirect(req, res, 'Successfully registered!', null, null);
 });
 
 module.exports = router;
