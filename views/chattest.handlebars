@@ -1,14 +1,15 @@
 <script src="/js/socket.io.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/chat.css" media="screen" title="no title">
 <div class="container-fluid">
 	<div class="col-xs-2 chat-group-list">
 
 	</div>
 	<div class="col-xs-10">
 		<div class="">
-			<ul id="chatView" class="chat-view">
-			</ul>
+			<ol reversed id="chatView" class="list-item pre-scrollable" data-spy="scroll">
+			</ol>
 		</div>
-	  <div class="navbar-fixed-bottom chat-form">
+	  <div class="chatForm">
 			<div class="col-xs-11">
 		  	<input id="sendMessage" type="text" class="form-control" placeholder="Write here.">
 			</div>
@@ -19,18 +20,4 @@
 	</div>
 </div>
 
-
-
-<script type="text/javascript">
-	var socket = io();
-
-	socket.on('messageReceive', function(data){
-		$('#chatView').append("<li>" + data.author + ': ' + data.message + "</li>");
-	});
-
-	$('#sendButton').click(function(){
-		socket.emit('message', $('#sendMessage').val());
-		console.log('sending message ' + $('#sendMessage').val());
-		return false;
-	});
-</script>
+<script src="/js/socketclient.js" charset="utf-8"></script>

@@ -1,0 +1,16 @@
+#chatView{
+	list-style: none;
+	height: 500px;
+}
+
+.message{
+	background-color: rgb(111, 201, 204);
+	margin: 5px;
+	padding: 10px;
+	text-align: left;
+}
+
+.message-self{
+	background-color: rgb(175, 255, 198);
+	text-align: right;
+}

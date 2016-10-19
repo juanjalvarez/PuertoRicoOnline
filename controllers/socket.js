@@ -7,6 +7,10 @@ console.log('Starting socket server');
 io.on('connection', function(socket){
 	console.log('new connection');
 
+	socket.on('requestUsername', function(){
+		socket.emit('receiveUsername', socket.request.session.auth.username);
+	});
+
 	socket.on('message', function(msg){
 		console.log(msg);
 		var json = {
