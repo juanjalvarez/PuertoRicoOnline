@@ -9,7 +9,11 @@ io.on('connection', function(socket){
 
 	socket.on('message', function(msg){
 		console.log(msg);
-		socket.emit('r', socket.request.session.auth.username);
+		var json = {
+			author: socket.request.session.auth.username,
+			message: msg
+		}
+		io.emit('messageReceive', json);
 	});
 });
 

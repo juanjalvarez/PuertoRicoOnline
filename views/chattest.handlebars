@@ -24,13 +24,12 @@
 <script type="text/javascript">
 	var socket = io();
 
-	socket.on('r', function(data){
-		$('#chatView').append("<li>" + data + "</li>");
+	socket.on('messageReceive', function(data){
+		$('#chatView').append("<li>" + data.author + ': ' + data.message + "</li>");
 	});
 
 	$('#sendButton').click(function(){
 		socket.emit('message', $('#sendMessage').val());
-		$('#chatView').append("<li>" + $('#sendMessage').val() + "</li>");
 		console.log('sending message ' + $('#sendMessage').val());
 		return false;
 	});
