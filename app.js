@@ -9,8 +9,9 @@ var db = require('./models/database');
 var fs = require('fs');
 var mongoose = require('mongoose');
 var express_session = require('express-session');
+var MongooseStore = require('connect-mongo')(express_session);
 var session = express_session({
-	//store: require('mongoose-session')(mongoose),
+	store: new MongooseStore({mongooseConnection: mongoose.connection}),
 	secret: 'jf902jf9723douhSLPe9g87fy8o3774gkljh8932q74hf08q34hgjkdfhg',
 	cookie: {
 		maxAge: 3600000
