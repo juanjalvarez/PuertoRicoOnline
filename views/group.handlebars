@@ -5,12 +5,19 @@
 			<span>{{group.name}}</span>
 		</h2>
   </div>
+	{{#if auth}}
+		<div class="row">
+		  <a href="/group/join/{{group.name}}">Join Group</a>
+		</div>
+	{{/if}}
 	<div class="row">
 	  <h3>Subscriptions:</h3>
 	</div>
-	<ul class="list-group">
-		{{#each groupSubList}}
-			{{> userlink this.user}}
-		{{/each}}
-	</ul>
+	<div class="row">
+		<ul class="list-group">
+			{{#each groupSubList}}
+				{{> userlink this.user}}
+			{{/each}}
+		</ul>
+	</div>
 </div>

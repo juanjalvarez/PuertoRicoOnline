@@ -1,12 +1,20 @@
-<h3>
-	<img src="{{user.img}}" alt="" width="200" height="200" />
-	{{#if user.name}}
-		{{name}} ({{user.username}})
-	{{else}}
-		{{user.username}}
+<div class="col-xs-offset-2 col-xs-8">
+	<div class="row">
+	  <img src="{{user.img}}" alt="" width="200" height="200" />
+		<h2>
+			{{> userlink user}}
+		</h2>
+	</div>
+	{{#if groupSubList.length}}
+	<div class="row">
+		<h2>Groups</h2>
+	  <ul class="list-group">
+	    {{#each groupSubList}}
+				<li class="list-group-item">
+					{{> grouplink this.group}}
+				</li>
+			{{/each}}
+	  </ul>
+	</div>
 	{{/if}}
-	<br>
-	{{#if user.facebook}}
-		Facebook: {{user.facebook}}
-	{{/if}}
-</h3>
+</div>

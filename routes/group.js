@@ -31,7 +31,15 @@ router.get('/join/:group', function(req, res, next){
 			group: g._id,
 			user: req.session.auth._id
 		});
-		newSub.save();
+		newSub.save(function(err){
+			if(err)
+				console.log(err);
+		});
+		res.render('redirect', {
+			title: 'Successfully subscribed to ' + req.params.group + '!',
+			url: '/group/' + req.params.group,
+			auth: req.session.auth
+		});
 	});
 });
 
