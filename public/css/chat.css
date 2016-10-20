@@ -1,9 +1,56 @@
-#chatView{
+.content{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.chat-group-list{
+	border-right: 1px solid rgb(161, 161, 161);
+	height: 100%;
+}
+
+.chat-view{
+	position: relative;
+	margin: 0 auto;
+	height: 100%;
+}
+
+.message-list-container{
+	border: 1px solid red;
+	position: absolute;
+	width: 100%;
+	top: 10px;
+	bottom: 50px;
+}
+
+.message-list{
+	border: 1px solid red;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	list-style: none;
-	height: 500px;
+}
+
+.container-fluid{
+	height: 100vh;
+	min-height: 100vh;
+}
+
+.message-form{
+	border: 1px solid red;
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	bottom: 0;
+	left: 0;
 }
 
 .message{
+	border: 1px solid red;
 	background-color: rgb(111, 201, 204);
 	margin: 5px;
 	padding: 10px;

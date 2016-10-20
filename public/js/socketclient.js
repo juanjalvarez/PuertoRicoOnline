@@ -1,7 +1,7 @@
 var socket = io();
 
 socket.on('messageReceive', function(data){
-	$('#chatView').append("<li class=\"message " + (username === data.author ? 'message-self' : '') + " \">" + (username === data.author ? 'You: ' : data.author + ': ') + data.message + "</li>");
+	$('#messageList').append("<li class=\"list-group-item message " + (username === data.author ? 'message-self' : '') + " \">" + (username === data.author ? 'You: ' : data.author + ': ') + data.message + "</li>");
 	scrollChatView();
 });
 
@@ -22,7 +22,7 @@ function sendMessage(){
 }
 
 function scrollChatView(){
-	var element = document.getElementById('chatView');
+	var element = document.getElementById('messageList');
 	element.scrollTop = element.scrollHeight;
 }
 

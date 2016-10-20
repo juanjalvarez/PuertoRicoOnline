@@ -12,7 +12,6 @@ io.on('connection', function(socket){
 	});
 
 	socket.on('message', function(msg){
-		console.log(msg);
 		var json = {
 			author: socket.request.session.auth.username,
 			message: msg
