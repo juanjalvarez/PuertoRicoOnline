@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../models/database');
 
 router.get('/', function(req, res, next){
-	db.Group.find({}, function(err, g){
+	db.Group.find({'exclusive':false}, function(err, g){
 		res.render('grouplist', {
 			auth: req.session.auth,
 			groupList: g
@@ -11,39 +11,7 @@ router.get('/', function(req, res, next){
 	});
 });
 
-router.get('/create', function(req, res, next){
-	res.render('newgroup', {auth: req.session.auth});
-});
-
-router.get('/join/:group', function(req, res, next){
-	if(!req.session.auth){
-		res.render('redirect', {
-			title: 'Failed to join group!',
-			content: 'You are not signed in.',
-			url: '/group'
-		});
-		return;
-	}
-	db.Group.findOne({name:req.params.group}, function(err, g){
-		if(err)
-			console.log(err);
-		var newSub = new db.GroupSub({
-			group: g._id,
-			user: req.session.auth._id
-		});
-		newSub.save(function(err){
-			if(err)
-				console.log(err);
-		});
-		res.render('redirect', {
-			title: 'Successfully subscribed to ' + req.params.group + '!',
-			url: '/group/' + req.params.group,
-			auth: req.session.auth
-		});
-	});
-});
-
-router.get('/:group', function(req, res, next) {
+router.get('/view/:group', function(req, res, next) {
 	var gn = req.params.group
 	db.Group.findOne({'name':gn}, function(err, g){
 		if(err)
@@ -59,6 +27,89 @@ router.get('/:group', function(req, res, next) {
 				auth: req.session.auth
 			});
 		});
+	});
+});
+
+router.get('/join/:group', function(req, res, next){
+	if(!req.session.auth){
+		res.render('redirect', {
+			title: 'Failed to join group!',
+			content: 'You are not signed in.',
+			url: '/group',
+			auth: req.session.auth
+		});
+		return;
+	}
+	db.Group.findOne({name:req.params.group}, function(err, g){
+		if(err)
+			console.log(err);
+		var failed = false;
+		db.GroupSub.findOne({'user':req.session.auth._id, 'group':g._id}, function(err, sub){
+			if(sub){
+				res.render('redirect', {
+					auth: req.session.auth,
+					title: 'Failed to subscribe to group!',
+					content: 'You are already subscribed to this group',
+					url: '/' + g.name
+				});
+				failed = true;
+			}else {
+				var newSub = new db.GroupSub({
+					group: g._id,
+					user: req.session.auth._id
+				});
+				newSub.save(function(err){
+					if(err)
+						console.log(err);
+				});
+				res.render('redirect', {
+					title: 'Successfully subscribed to ' + req.params.group + '!',
+					url: '/group/' + req.params.group,
+					auth: req.session.auth
+				});
+			}
+		});
+	});
+});
+
+router.get('/create', function(req, res, next){
+	res.render('creategroup', {auth: req.session.auth});
+});
+
+router.post('/create', function(req, res, next){
+	if(!req.session.auth){
+		res.render('redirect', {
+			title: 'Failed to create group!',
+			content: 'You must be logged in to do this.',
+			auth: req.session.auth
+		});
+		return;
+	}
+	var gn = req.body.groupname;
+	var newGroup = new db.Group({
+		name: gn,
+		exclusive: false
+	});
+	newGroup.save(function(err){
+		if(err){
+			console.log(newGroup);
+			console.log(err);
+		}
+	});
+	var newSub = new db.GroupSub({
+		group: newGroup._id,
+		user: req.session.auth._id
+	});
+	newSub.save(function(err){
+		if(err){
+			console.log(newSub);
+			console.log(err);
+		}
+	});
+	res.render('redirect', {
+		auth: req.session.auth,
+		title: 'Successfully created group!',
+		url: '/group/view/' + newGroup.name
 	});
 });
 

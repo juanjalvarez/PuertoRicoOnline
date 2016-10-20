@@ -21,7 +21,7 @@ router.post('/createcomment', function(req, res, next){
 			res.render('redirect', {
 				auth: req.session.auth,
 				title: 'Could not create new comment',
-				url: '/commenttest'
+				url: '/test/commenttest'
 			});
 			return;
 		}
@@ -36,7 +36,7 @@ router.post('/createcomment', function(req, res, next){
 				res.render('redirect', {
 					auth: req.session.auth,
 					title: 'Could not create new comment',
-					url: '/commenttest'
+					url: '/test/commenttest'
 				});
 				return;
 			}
@@ -44,7 +44,7 @@ router.post('/createcomment', function(req, res, next){
 		res.render('redirect',{
 			auth: req.session.auth,
 			title: 'Successfully created a new comment',
-			url: '/commenttest'
+			url: '/test/commenttest'
 		});
 	});
 });
