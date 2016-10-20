@@ -19,6 +19,7 @@
 .message-list-container{
 	border: 1px solid red;
 	position: absolute;
+	height: auto;
 	width: 100%;
 	top: 10px;
 	bottom: 50px;
@@ -27,6 +28,7 @@
 .message-list{
 	border: 1px solid red;
 	position: absolute;
+	height: 100%;
 	width: 100%;
 	top: 0;
 	right: 0;
@@ -41,7 +43,6 @@
 }
 
 .message-form{
-	border: 1px solid red;
 	position: absolute;
 	width: 100%;
 	height: 50px;
@@ -49,8 +50,8 @@
 	left: 0;
 }
 
+
 .message{
-	border: 1px solid red;
 	background-color: rgb(111, 201, 204);
 	margin: 5px;
 	padding: 10px;
@@ -60,4 +61,11 @@
 .message-self{
 	background-color: rgb(175, 255, 198);
 	text-align: right;
+}
+
+.message-info{
+	background-color: rgb(71, 96, 200);
+	margin: 5px;
+	padding: 10px;
+	text-align: center;
 }

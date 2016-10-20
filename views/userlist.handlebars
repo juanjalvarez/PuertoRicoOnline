@@ -1,7 +1,14 @@
-<div class="">
-	{{#each userList}}
-		<div class="">
-			{{> user this}}
-		</div>
-	{{/each}}
+<div class="col-xs-offset-2 col-xs-8">
+	<div class="row">
+	  <h3>List of users</h3>
+	</div>
+  <div class="row">
+    <ul class="list-group">
+			{{#each userList}}
+			<li class="list-group-item">
+				{{> userlink this}}
+			</li>
+			{{/each}}
+    </ul>
+  </div>
 </div>

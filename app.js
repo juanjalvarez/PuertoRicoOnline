@@ -55,6 +55,12 @@ app.use('/', index);
 var user = require('./routes/user');
 app.use('/user', user);
 
+var group = require('./routes/group');
+app.use('/group', group);
+
+var chat = require('./routes/chat');
+app.use('/chat', chat);
+
 var test = require('./routes/test');
 app.use('/test', test);
 

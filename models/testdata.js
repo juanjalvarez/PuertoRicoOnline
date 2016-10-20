@@ -54,7 +54,7 @@ sync(function(){
 
 	var groupList = [
 		new db.Group({
-			name: 'Group #1',
+			name: 'Group1',
 			exclusive: false
 		})
 	];
@@ -66,17 +66,17 @@ sync(function(){
 		new db.Comment({
 			author: userList[0]._id,
 			group: groupList[0]._id,
-			text: 'comment #1'
+			text: 'comment1'
 		}),
 		new db.Comment({
 			author: userList[1]._id,
 			group: groupList[0]._id,
-			text: 'comment #2'
+			text: 'comment2'
 		}),
 		new db.Comment({
 			author: userList[2]._id,
 			group: groupList[0]._id,
-			text: 'comment #3'
+			text: 'comment3'
 		}),
 	];
 

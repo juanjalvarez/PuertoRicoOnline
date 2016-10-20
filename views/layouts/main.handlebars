@@ -26,12 +26,15 @@
             <li><a href="/">Home</a></li>
 						<li><a href="/about">About</a></li>
             <li><a href="/user">User</a></li>
+            <li><a href="/group">Group</a></li>
+						{{#if auth}}
+							<li><a href="/chat">Chat</a></li>
+						{{/if}}
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Test<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/test/commenttest">Comment Test</a></li>
 	              <li><a href="/test/cookietest">Cookie Test</a></li>
-	              <li><a href="/test/chattest">Chat Test</a></li>
               </ul>
             </li>
           </ul>
@@ -42,7 +45,7 @@
 						{{else}}
 							<li>
 								<p class="navbar-text">
-									Hello, 
+									Hello,
 									{{#if auth.name}}
 										{{auth.name}}
 									{{else}}
