@@ -45,12 +45,7 @@
 						{{else}}
 							<li>
 								<p class="navbar-text">
-									Hello,
-									{{#if auth.name}}
-										{{auth.name}}
-									{{else}}
-										{{auth.username}}
-									{{/if}}
+									Hello, {{> userlink auth}}
 								</p>
 							</li>
 							<li><a href="/logout">Logout</a></li>
