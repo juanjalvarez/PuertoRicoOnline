@@ -19,6 +19,10 @@ io.on('connection', function(socket){
 		}
 		io.emit('messageReceive', json);
 	});
+
+	socket.on('disconnect', function(){
+		console.log(username + ' has disconnected from livechat');
+	});
 });
 
 console.log('Socket server started');
