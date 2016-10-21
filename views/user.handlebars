@@ -2,19 +2,29 @@
 	<div class="row">
 	  <img src="{{user.img}}" alt="" width="200" height="200" />
 		<h2>
-			{{> userlink user}}
+			{{#if user.name}}
+				<h2>
+					{{user.name}} ({{user.username}})
+				</h2>
+			{{else}}
+				{{user.username}}
+			{{/if}}
 		</h2>
 	</div>
-	{{#if groupSubList.length}}
 	<div class="row">
 		<h2>Groups</h2>
-	  <ul class="list-group">
-	    {{#each groupSubList}}
-				<li class="list-group-item">
-					{{> grouplink this.group}}
-				</li>
-			{{/each}}
-	  </ul>
+		{{#if groupSubList.length}}
+		  <ul class="list-group">
+		    {{#each groupSubList}}
+					<li class="list-group-item">
+						{{> grouplink this.group}}
+					</li>
+				{{/each}}
+		  </ul>
+		{{else}}
+			<h4>
+				{{user.username}} is not a part of any groups.
+			</h4>
+		{{/if}}
 	</div>
-	{{/if}}
 </div>

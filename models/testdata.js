@@ -39,12 +39,8 @@ sync(function(){
 			password: '12345'
 		}),
 		new db.User({
-			username: 'franniieexd',
-			name: 'Frances K. Fragela',
-			password: '12345'
-		}),
-		new db.User({
-			username: 'ronaldmcdonald',
+			username: 'raulroque',
+			name: 'Raul III Roque',
 			password: '12345'
 		}),
 	];
@@ -54,7 +50,7 @@ sync(function(){
 
 	var groupList = [
 		new db.Group({
-			name: 'Group1',
+			name: 'Global',
 			exclusive: false
 		})
 	];
@@ -72,11 +68,6 @@ sync(function(){
 			author: userList[1]._id,
 			group: groupList[0]._id,
 			text: 'comment2'
-		}),
-		new db.Comment({
-			author: userList[2]._id,
-			group: groupList[0]._id,
-			text: 'comment3'
 		}),
 	];
 

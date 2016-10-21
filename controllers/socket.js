@@ -5,7 +5,8 @@ var session = app.session;
 console.log('Starting socket server');
 
 io.on('connection', function(socket){
-	console.log('new connection');
+	var username = socket.request.session.auth.username || 'User';
+	console.log(username + ' has connected to livechat');
 
 	socket.on('requestUsername', function(){
 		socket.emit('receiveUsername', socket.request.session.auth.username);
