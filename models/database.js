@@ -68,8 +68,8 @@ var groupsubSchema = mongoose.Schema({
 const GroupSub = mongoose.model('GroupSub', groupsubSchema);
 module.exports.GroupSub = GroupSub;
 
-var commentSchema = mongoose.Schema({
-	author: {
+var messageSchema = mongoose.Schema({
+	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
 		required: true
@@ -86,5 +86,5 @@ var commentSchema = mongoose.Schema({
 	text: String
 });
 
-const Comment = mongoose.model('Comment', commentSchema);
-module.exports.Comment = Comment;
+const Message = mongoose.model('Message', messageSchema);
+module.exports.Message = Message;

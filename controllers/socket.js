@@ -1,6 +1,7 @@
 var app = require('../app');
 var io = app.io;
 var session = app.session;
+var db = require('../models/database');
 
 console.log('Starting socket server');
 
@@ -22,6 +23,10 @@ io.on('connection', function(socket){
 
 	socket.on('disconnect', function(){
 		console.log(username + ' has disconnected from livechat');
+	});
+
+	socket.on('requestGroup', function(err, id){
+		db.Comment.find({});
 	});
 });
 
