@@ -62,6 +62,8 @@ function scrollChatView(){
 }
 
 socket.on('messageReceive', function(data){
-	appendComment(data);
-	scrollChatView();
+	if(data.group === currentGroup){
+		appendComment(data);
+		scrollChatView();
+	}
 });
