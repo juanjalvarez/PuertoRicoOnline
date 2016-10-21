@@ -22,7 +22,7 @@ router.post('/createmessage', function(req, res, next){
 			res.render('redirect', {
 				auth: req.session.auth,
 				title: 'Could not create new comment',
-				url: '/test/messagetest'
+				url: req.session.lastUrl
 			});
 			return;
 		}
@@ -37,7 +37,7 @@ router.post('/createmessage', function(req, res, next){
 				res.render('redirect', {
 					auth: req.session.auth,
 					title: 'Could not create new comment',
-					url: '/test/messagetest'
+					url: req.session.lastUrl
 				});
 				return;
 			}

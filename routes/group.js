@@ -37,7 +37,7 @@ router.get('/join/:group', function(req, res, next){
 		res.render('redirect', {
 			title: 'Failed to join group!',
 			content: 'You are not signed in.',
-			url: '/group',
+			url: req.session.lastUrl,
 			auth: req.session.auth
 		});
 		return;
@@ -52,7 +52,7 @@ router.get('/join/:group', function(req, res, next){
 					auth: req.session.auth,
 					title: 'Failed to subscribe to group!',
 					content: 'You are already subscribed to this group',
-					url: '/' + g.name
+					url: req.session.lastUrl
 				});
 				failed = true;
 			}else {
@@ -79,7 +79,8 @@ router.post('/create', function(req, res, next){
 		res.render('redirect', {
 			title: 'Failed to create group!',
 			content: 'You must be logged in to do this.',
-			auth: req.session.auth
+			auth: req.session.auth,
+			url: req.session.lastUrl
 		});
 		return;
 	}

@@ -3,6 +3,8 @@ var socket = io();
 var username = null;
 var currentGroup = null;
 
+$("#chatView").hide();
+
 function appendComment(data){
 	$('#messageList').append("<li class=\"list-group-item message " + (username === data.author ? 'message-self' : '') + " \">" + (username === data.author ? 'You: ' : data.author + ': ') + data.message + "</li>");
 }
@@ -49,6 +51,7 @@ $('.group-list-link').click(function(){
 		json.commentlist.forEach(function(elem){
 			appendComment(elem);
 		});
+		$("#chatView").show();
 		scrollChatView();
 	});
 });

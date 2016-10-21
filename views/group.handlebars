@@ -16,7 +16,9 @@
 	<div class="row">
 		<ul class="list-group">
 			{{#each groupSubList}}
-				{{> userlink this.user}}
+				<li class="list-group-item">
+						{{> userlink this.user}}
+				</li>
 			{{/each}}
 		</ul>
 	</div>

@@ -63,6 +63,16 @@ router.post('/register', function(req, res, next){
 		if(err)
 			console.log(err);
 	});
+	db.Group.findOne({'name':'Global'}, function(err, glb){
+		var newSub = new db.GroupSub({
+			group: glb._id,
+			user: newUser._id
+		});
+		newSub.save(function(err){
+			if(err)
+				console.log(err);
+		});
+	});
 	req.session.auth = newUser;
 	res.redirect(req.session.lastUrl || '/');
 });
