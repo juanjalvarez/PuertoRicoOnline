@@ -19,7 +19,7 @@
 					<div class="row col-xs-12 chat-group-list-container">
 						<ul class="chat-group-list pre-scrollable">
 							{{#each groupList}}
-								<a href="#" id="{{this.group.name}}" class="group-list-link">
+								<a href="#" id="{{this.group.name}}" group-id="{{this.group._id}}" class="group-list-link">
 									<li class="list-group-item">
 										{{this.group.name}}
 									</li>

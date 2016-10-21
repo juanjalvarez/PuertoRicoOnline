@@ -1,7 +1,7 @@
 var socket = io();
 
 var username = null;
-var group = null;
+var currentGroup = null;
 
 function appendComment(data){
 	$('#messageList').append("<li class=\"list-group-item message " + (username === data.author ? 'message-self' : '') + " \">" + (username === data.author ? 'You: ' : data.author + ': ') + data.message + "</li>");
@@ -17,8 +17,12 @@ function sendMessage(){
 	var msg = $('#sendMessage').val();
 	if(msg === '')
 		return false;
-	socket.emit('message', msg);
-	console.log('sending message ' + $('#sendMessage').val());
+	var json = {
+		message: msg,
+		group: currentGroup
+	};
+	socket.emit('message', json);
+	console.log('sending message ' + msg);
 	$('#sendMessage').val('');
 	return false;
 }
@@ -34,9 +38,18 @@ $('#sendMessage').keypress(function (e) {
 });
 
 $('.group-list-link').click(function(){
-	socket.emit('requestGroup', this.id);
-	socket.once('receiveGroup', function(commentList){
-
+	$('#messageList').empty();
+	currentGroup = $(this).attr('group-id');
+	var json = {
+		groupid: currentGroup
+	};
+	console.log(currentGroup);
+	socket.emit('requestGroup', json);
+	socket.once('receiveGroup', function(json){
+		json.commentlist.forEach(function(elem){
+			appendComment(elem);
+		});
+		scrollChatView();
 	});
 });
 

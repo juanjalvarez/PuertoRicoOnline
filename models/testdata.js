@@ -26,7 +26,7 @@ sync(function(){
 		console.log('Emptied GroupSub');
 	});
 
-	db.Comment.remove({}, function(err){
+	db.Message.remove({}, function(err){
 		if(err)
 			console.log(err);
 		console.log('Emptied Comment');
@@ -58,20 +58,20 @@ sync(function(){
 		g.save(callback);
 	});
 
-	var commentList = [
-		new db.Comment({
-			author: userList[0]._id,
+	var messageList = [
+		new db.Message({
+			user: userList[0]._id,
 			group: groupList[0]._id,
-			text: 'comment1'
+			text: 'msg1'
 		}),
-		new db.Comment({
-			author: userList[1]._id,
+		new db.Message({
+			user: userList[1]._id,
 			group: groupList[0]._id,
-			text: 'comment2'
+			text: 'msg2'
 		}),
 	];
 
-	commentList.forEach(function(c, index){
+	messageList.forEach(function(c, index){
 		c.save(callback);
 	});
 });
