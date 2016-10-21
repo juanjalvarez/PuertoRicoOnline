@@ -12,10 +12,12 @@ function redirect(req, res, _title, _content, _url){
 }
 
 router.get('/', function(req, res, next) {
+	req.session.lastUrl = req.originalUrl;
   res.render('home', {auth:req.session.auth});
 });
 
 router.get('/about', function(req, res, next){
+	req.session.lastUrl = req.originalUrl;
 	res.render('about', {auth:req.session.auth});
 });
 
@@ -29,7 +31,8 @@ router.post('/login', function(req, res, next){
 	db.User.findOne({'username':un}, function(err, usr){
 		if(usr && pw === usr.password){
 			req.session.auth = usr;
-			redirect(req, res, 'Successfully logged in!', null, null);
+			console.log(req.session.lastUrl);
+			res.redirect(req.session.lastUrl || '/');
 		}else
 			redirect(req, res, 'Failed to log in!', 'Wrong username or password', '/login');
 	});
@@ -37,7 +40,7 @@ router.post('/login', function(req, res, next){
 
 router.get('/logout', function(req, res, next){
 	req.session.auth = null;
-	redirect(req, res, 'Successfully logged out!', null, null);
+	res.redirect(req.session.lastUrl || '/');
 });
 
 router.get('/register', function(req, res, next){
@@ -61,7 +64,7 @@ router.post('/register', function(req, res, next){
 			console.log(err);
 	});
 	req.session.auth = newUser;
-	redirect(req, res, 'Successfully registered!', null, null);
+	res.redirect(req.session.lastUrl || '/');
 });
 
 module.exports = router;

@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../models/database');
 
 router.get('/', function(req, res, next){
+	req.session.lastUrl = req.originalUrl;
 	db.GroupSub.find({'user':req.session.auth._id})
 	.populate('group')
 	.exec(function(err, subscribedGroups){

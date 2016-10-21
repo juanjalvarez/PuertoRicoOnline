@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../models/database');
 
 router.get('/', function(req, res, next){
+	req.session.lastUrl = req.originalUrl;
 	db.Group.find({'exclusive':false}, function(err, g){
 		res.render('grouplist', {
 			auth: req.session.auth,
@@ -12,6 +13,7 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/view/:group', function(req, res, next) {
+	req.session.lastUrl = req.originalUrl;
 	var gn = req.params.group
 	db.Group.findOne({'name':gn}, function(err, g){
 		if(err)
@@ -62,11 +64,7 @@ router.get('/join/:group', function(req, res, next){
 					if(err)
 						console.log(err);
 				});
-				res.render('redirect', {
-					title: 'Successfully subscribed to ' + req.params.group + '!',
-					url: '/group/' + req.params.group,
-					auth: req.session.auth
-				});
+				res.redirect(req.session.lastUrl || '/');
 			}
 		});
 	});
@@ -106,11 +104,7 @@ router.post('/create', function(req, res, next){
 			console.log(err);
 		}
 	});
-	res.render('redirect', {
-		auth: req.session.auth,
-		title: 'Successfully created group!',
-		url: '/group/view/' + newGroup.name
-	});
+	res.redirect(req.session.lastUrl || '/');
 });
 
 module.exports = router;

@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../models/database');
 
 router.get('/commenttest', function(req, res, next){
+	req.session.lastUrl = req.originalUrl;
 	db.Comment.find({})
 	.populate('author')
 	.exec(function(err, comments){
@@ -41,15 +42,12 @@ router.post('/createcomment', function(req, res, next){
 				return;
 			}
 		});
-		res.render('redirect',{
-			auth: req.session.auth,
-			title: 'Successfully created a new comment',
-			url: '/test/commenttest'
-		});
+		res.redirect(req.session.lastUrl || '/');
 	});
 });
 
 router.get('/cookietest', function(req, res, next){
+	req.session.lastUrl = req.originalUrl;
 	if(!req.session.views)
 		req.session.views = 0;
 	req.session.views++;
