@@ -26,7 +26,7 @@ sync(function(){
 		console.log('Emptied GroupSub');
 	});
 
-	db.Comment.remove({}, function(err){
+	db.Message.remove({}, function(err){
 		if(err)
 			console.log(err);
 		console.log('Emptied Comment');
@@ -39,12 +39,8 @@ sync(function(){
 			password: '12345'
 		}),
 		new db.User({
-			username: 'franniieexd',
-			name: 'Frances K. Fragela',
-			password: '12345'
-		}),
-		new db.User({
-			username: 'ronaldmcdonald',
+			username: 'raulroque',
+			name: 'Raul III Roque',
 			password: '12345'
 		}),
 	];
@@ -54,7 +50,7 @@ sync(function(){
 
 	var groupList = [
 		new db.Group({
-			name: 'Group1',
+			name: 'Global',
 			exclusive: false
 		})
 	];
@@ -62,25 +58,20 @@ sync(function(){
 		g.save(callback);
 	});
 
-	var commentList = [
-		new db.Comment({
-			author: userList[0]._id,
+	var messageList = [
+		new db.Message({
+			user: userList[0]._id,
 			group: groupList[0]._id,
-			text: 'comment1'
+			text: 'msg1'
 		}),
-		new db.Comment({
-			author: userList[1]._id,
+		new db.Message({
+			user: userList[1]._id,
 			group: groupList[0]._id,
-			text: 'comment2'
-		}),
-		new db.Comment({
-			author: userList[2]._id,
-			group: groupList[0]._id,
-			text: 'comment3'
+			text: 'msg2'
 		}),
 	];
 
-	commentList.forEach(function(c, index){
+	messageList.forEach(function(c, index){
 		c.save(callback);
 	});
 });

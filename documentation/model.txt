@@ -15,8 +15,8 @@ groupsub
 	groupid
 	userid
 
-comment
+message
 	senderid
 	groupid
 	datetime
-	comment
+	text

@@ -39,7 +39,7 @@ app.set('view engine', 'handlebars');
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', '/images/fav.ico')));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

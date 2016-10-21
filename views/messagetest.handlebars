@@ -1,14 +1,14 @@
-<h1>Comment Test</h1>
+<h1>Message Test</h1>
 <div class="commentsection">
-	{{#each commentList}}
-		{{> comment this}}
+	{{#each messageList}}
+		{{> message this}}
 		<br>
 	{{/each}}
 </div>
 
 {{#if auth}}
 	<div class="">
-		<form class="" action="/test/createcomment" method="post">
+		<form class="" action="/test/createmessage" method="post">
 			<input type="text" name="text" value="">
 			<input type="submit" name="submit" value="Send">
 		</form>
