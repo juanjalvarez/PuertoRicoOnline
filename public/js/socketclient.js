@@ -40,7 +40,6 @@ $('#sendMessage').keypress(function (e) {
 });
 
 $('.group-list-link').click(function(){
-	$('#messageList').empty();
 	currentGroup = $(this).attr('group-id');
 	var json = {
 		groupid: currentGroup
@@ -48,6 +47,7 @@ $('.group-list-link').click(function(){
 	console.log(currentGroup);
 	socket.emit('requestGroup', json);
 	socket.once('receiveGroup', function(json){
+		$('#messageList').empty();
 		json.commentlist.forEach(function(elem){
 			appendComment(elem);
 		});
