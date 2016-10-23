@@ -1,31 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models/database');
-var passport = require('passport');
-
-
-
-router.get('/auth/facebook', passport.authenticate('facebook', {
-	scope: 'email'
-}), function(req, res){
-	console.log('req');
-});
-
-router.get('/auth/facebook/callback', passport.authenticate('facebook', {
-	failureRedirect: '/'
-}, function(req, res){
-	console.log('callback done: ' + req.user);
-	res.redirect('/');
-}));
-
-function redirect(req, res, _title, _content, _url){
-	res.render('redirect', {
-		title: _title,
-		content: _content,
-		url: _url,
-		auth: req.session.auth
-	});
-}
 
 router.get('/', function(req, res, next) {
 	req.session.lastUrl = req.originalUrl;

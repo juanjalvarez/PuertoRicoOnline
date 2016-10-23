@@ -45,30 +45,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
-
-var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new FacebookStrategy({
-	clientID: '168722850246412',
-	clientSecret: '5cd2b7e3ded4b3e14039da07bb6d039e',
-	callbackURL: '/auth/facebook/callback',
-	profileFields: [
-		'id',
-		'emails',
-		'displayName',
-		'name',
-		'gender'
-	]
-},
-function(accessToken, refreshToken, profile, cb){
-	console.log(profile.id);
-}));
-
-
 // setup sessions
 console.log('Initializing session');
 app.use(session);
