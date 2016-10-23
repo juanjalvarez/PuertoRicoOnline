@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var fs = require('fs');
 
 //var dbString = fs.readFileSync('.dbconn', 'utf8').replace('\n', '');
-var dbString = process.ENV.MONGODB_URI;
+var dbString = process.env.MONGODB_URI;
 
 mongoose.connect(dbString);
 
