@@ -2,6 +2,38 @@ var express = require('express');
 var router = express.Router();
 var db = require('../models/database');
 
+router.get('/data', function(req, res, next){
+	require('../models/testdata');
+	res.redirect('/');
+});
+
+router.get('/flush', function(req, res, next){
+	db.User.remove({}, function(err){
+		if(err)
+			console.log(err);
+		console.log('Emptied User');
+	});
+
+	db.Group.remove({}, function(err){
+		if(err)
+			console.log(err);
+		console.log('Emptied Group');
+	});
+
+	db.GroupSub.remove({}, function(err){
+		if(err)
+			console.log(err);
+		console.log('Emptied GroupSub');
+	});
+
+	db.Message.remove({}, function(err){
+		if(err)
+			console.log(err);
+		console.log('Emptied Comment');
+	});
+	res.redirect('/');
+});
+
 router.get('/messagetest', function(req, res, next){
 	req.session.lastUrl = req.originalUrl;
 	db.Message.find({})

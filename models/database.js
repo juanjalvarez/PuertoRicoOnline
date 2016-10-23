@@ -26,7 +26,7 @@ var userSchema = mongoose.Schema({
 	},
 	name: String,
 	password: {
-		type: String,
+		type: Object,
 		required: true
 	},
 	facebook: String,

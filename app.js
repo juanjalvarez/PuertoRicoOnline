@@ -37,8 +37,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-// uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', '/images/fav.ico')));
 //app.use(logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -60,6 +58,9 @@ app.use('/group', group);
 
 var chat = require('./routes/chat');
 app.use('/chat', chat);
+
+var auth = require('./routes/auth');
+app.use('/auth', auth);
 
 var test = require('./routes/test');
 app.use('/test', test);

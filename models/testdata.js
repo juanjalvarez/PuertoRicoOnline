@@ -1,12 +1,12 @@
 var db = require('./database');
-var sync = require('sync');
+var cred = require('credential')();
 
 var callback = function(err){
 	if(err)
 		console.log(err);
 }
 
-sync(function(){
+module.exports = function(){
 
 	db.User.remove({}, function(err){
 		if(err)
@@ -44,8 +44,13 @@ sync(function(){
 			password: '12345'
 		}),
 	];
-	userList.forEach(function(u){
-		u.save(callback);
+	cred.hash('12345', function(err, hash){
+		if(err)
+			console.log(err);
+		userList.forEach(function(u){
+			u.password = hash;
+			u.save(callback);
+		});
 	});
 
 	var groupList = [
@@ -74,4 +79,6 @@ sync(function(){
 	messageList.forEach(function(c, index){
 		c.save(callback);
 	});
-});
+};
+
+module.exports();
