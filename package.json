@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "forever -w app.js"
+    "start": "npm app.js"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -19,6 +19,8 @@
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.5.0",
 		"express-socket.io-session":"*",
-		"connect-mongo":"*"
+		"connect-mongo":"*",
+		"passport":"*",
+		"passport-facebook":"*"
   }
 }
