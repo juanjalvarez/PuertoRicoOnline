@@ -12,6 +12,30 @@ router.get('/', function(req, res, next){
 	});
 });
 
+router.get('/settings', function(req, res, next){
+	db.User.findOne({'_id':req.session.auth._id}).exec(function(err, usr){
+		var json = {
+			auth: req.session.auth
+		}
+		res.render('settings', json);
+	});
+});
+
+router.post('/updatesettings', function(req, res, next){
+	var newName = req.body.name;
+	var newImg = req.body.img;
+	req.session.auth.name = newName;
+	req.session.auth.img = newImg;
+	db.User.update({'_id':req.session.auth._id}, {
+		name: newName,
+		img: newImg
+	}, function(err, numberAffected, rawResponse){
+		if(err)
+			console.log(err);
+	});
+	res.redirect(req.session.lastUrl);
+});
+
 router.get('/:user', function(req, res, next) {
 	req.session.lastUrl = req.originalUrl;
 	var un = req.params.user

@@ -27,7 +27,15 @@ var session = express_session({
 module.exports.session = session;
 
 var hbs = exphbs.create({
- defaultLayout: 'main'
+ defaultLayout: 'main',
+ helpers: {
+	 'if_eq':function(a, b, opts) {
+	     if(a == b)
+	         return opts.fn(this);
+	     else
+	         return opts.inverse(this);
+	 }
+ }
 });
 
 var app = express();

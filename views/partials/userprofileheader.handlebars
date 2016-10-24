@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/userprofile.css" media="screen" title="no title">
+<div class="col-xs-12 user-profile-link">
+	<a href="/user/{{username}}">
+		<div class="row">
+		  <img src="{{img}}" class="profile-image"/>
+		</div>
+		<div class="row">
+			<div class="profile-name h2">
+				{{#if name}}
+					{{name}}
+				{{else}}
+					{{username}}
+				{{/if}}
+			</div>
+		</div>
+	</a>
+</div>

@@ -1,15 +1,14 @@
+<link rel="stylesheet" href="/css/user.css" media="screen" title="no title">
 <div class="col-xs-offset-2 col-xs-8">
 	<div class="row">
-	  <img src="{{user.img}}" alt="" width="200" height="200" />
-		<h2>
-			{{#if user.name}}
-				<h2>
-					{{user.name}} ({{user.username}})
-				</h2>
-			{{else}}
-				{{user.username}}
-			{{/if}}
-		</h2>
+		<div class="col-xs-10 profile-div">
+			{{> userprofileheader user}}
+		</div>
+		<div class="col-xs-2">
+		  {{#if_eq user._id auth._id}}
+				<a href="/user/settings">Update Settings</a>
+			{{/if_eq}}
+		</div>
 	</div>
 	<div class="row">
 		<h2>Groups</h2>

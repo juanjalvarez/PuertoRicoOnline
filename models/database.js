@@ -29,7 +29,6 @@ var userSchema = mongoose.Schema({
 		type: Object,
 		required: true
 	},
-	facebook: String,
 	img: {
 		type: String,
 		default: 'https://leafii.com/images/defaultProfilePic.png'

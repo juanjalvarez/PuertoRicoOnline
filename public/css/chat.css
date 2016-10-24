@@ -76,6 +76,7 @@
 	margin: 5px;
 	padding: 10px;
 	text-align: left;
+	word-wrap: break-word;
 }
 
 .message-self{

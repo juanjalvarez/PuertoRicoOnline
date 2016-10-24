@@ -1,0 +1,13 @@
+<div class="col-xs-offset-2 col-xs-8">
+	<form name="settings" action="/user/updatesettings" method="post">
+		<div class="form-group">
+		  <label for="name">Real Name</label>
+		  <input type="text" class="form-control" id="name" name="name" placeholder="Real name, for example: {{auth.name}}" value="{{auth.name}}">
+		</div>
+		<div class="form-group">
+		  <label for="img">Profile Image URL</label>
+		  <input type="text" class="form-control" id="img" name="img" placeholder="Image URL, for example: {{auth.img}}" value="{{auth.img}}">
+		</div>
+		<input type="submit" name="submit" value="Update" class="btn btn-group-justified">
+	</form>
+</div>

@@ -17,7 +17,8 @@ io.on('connection', function(socket){
 		var j = {
 			author: socket.request.session.auth.username,
 			message: json.message,
-			group: json.group
+			group: json.group,
+			img: socket.request.session.auth.img
 		}
 		var newMessage = new db.Message({
 			user: socket.request.session.auth._id,
