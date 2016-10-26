@@ -3975,6 +3975,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  background-color: #00c2ff
 }
 .nav > li {
   position: relative;
@@ -3988,7 +3989,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eee;
+  background-color: #03a0e3;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -4960,7 +4961,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  background-color: #f0ffda;
 }
 .jumbotron h1,
 .jumbotron .h1 {
