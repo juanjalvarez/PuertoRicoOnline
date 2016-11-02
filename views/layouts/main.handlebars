@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="/css/bootstrap-theme.min.css" media="screen" title="no title">
 		<script src="/js/jquery.js" charset="utf-8"></script>
 		<script src="/js/bootstrap.min.js" charset="utf-8"></script>
+		<script src="https://use.fontawesome.com/9bb14c2197.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
@@ -46,7 +47,7 @@
 						{{else}}
 							<li>
 								<p class="navbar-text">
-									Hello, {{> userlink auth}}
+									Hello, <i class="fa fa-user-circle" aria-hidden="true"></i>{{> userlink auth}}
 								</p>
 							</li>
 							<li><a href="/logout">Logout</a></li>
