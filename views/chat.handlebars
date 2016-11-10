@@ -13,11 +13,11 @@
   <body>
 		<div class="content">
 			<div class="container-fluid">
-				<div class="col-xs-3 left-bar">
-					<div class="row col-xs-12">
+				<div class="col-md-3 left-bar">
+					<div class="row chat-group-list-container">
 						<a href="/">Home</a>
 					</div>
-					<div class="row col-xs-12 chat-group-list-container">
+					<div class="row chat-group-list-container">
 						<ul class="chat-group-list pre-scrollable">
 							{{#each groupList}}
 								<a href="#" id="{{this.group.name}}" group-id="{{this.group._id}}" class="group-list-link">
@@ -29,12 +29,12 @@
 						</ul>
 					</div>
 				</div>
-				<div id="chatView" class="col-xs-9 chat-view">
+				<div id="chatView" class="col-md-9 container-fluid">
 					<div class="message-list-container row col-xs-12">
 						<ol reversed id="messageList" class="list-item message-list pre-scrollable">
 						</ol>
 					</div>
-				  <div class="row message-form col-xs-12">
+				  <div class="row message-form">
 						<div class="col-xs-10">
 					  	<input id="sendMessage" type="text" class="form-control" placeholder="Write here.">
 						</div>

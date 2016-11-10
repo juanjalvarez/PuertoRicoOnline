@@ -31,9 +31,9 @@
 }
 
 .chat-view{
-	position: relative;
+	/*position: relative;
 	margin: 0 auto;
-	height: 100%;
+	height: 100%;*/
 }
 
 .message-list-container{
@@ -89,4 +89,12 @@
 	margin: 5px;
 	padding: 10px;
 	text-align: center;
+}
+
+.message-container {
+	border-radius: 6px;
+	/*border-top-left-radius: 1px;
+	border-top-right-radius: 1px;
+	border-bottom-left-radius: 1px;
+	border-bottom-right-radius: 1px;*/
 }
