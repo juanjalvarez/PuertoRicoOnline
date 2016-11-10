@@ -6,15 +6,16 @@
 }
 
 .left-bar{
-	position: relative;
+	position: fixed;
 	margin: 0 auto;
 	height: 100%;
 }
 
+
 .chat-group-list-container{
 	border-right: 1px solid rgb(161, 161, 161);
 	position: absolute;
-	height: auto;
+	height: 100%;
 	width: 100%;
 	top: 50px;
 	bottom: 0;

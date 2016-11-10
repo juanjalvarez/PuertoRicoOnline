@@ -11,14 +11,15 @@
 		<script src="/js/bootstrap.min.js" charset="utf-8"></script>
   </head>
   <body>
+
 		<div class="content">
 			<div class="container-fluid">
-				<div class="col-md-3 left-bar">
+				<div class="col-md-3 col-sm-4 col-xs-4 left-bar">
 					<div class="row chat-group-list-container">
 						<a href="/">Home</a>
 					</div>
 					<div class="row chat-group-list-container">
-						<ul class="chat-group-list pre-scrollable">
+						<ul class="chat-group-list">
 							{{#each groupList}}
 								<a href="#" id="{{this.group.name}}" group-id="{{this.group._id}}" class="group-list-link">
 									<li class="list-group-item">
@@ -29,20 +30,27 @@
 						</ul>
 					</div>
 				</div>
-				<div id="chatView" class="col-md-9 container-fluid">
-					<div class="message-list-container row col-xs-12">
-						<ol reversed id="messageList" class="list-item message-list pre-scrollable">
+				<div id="chatView" class="col-md-9 col-xs-8 col-md-offset-3 col-xs-offset-4 container-fluid">
+          <!-- <ol reversed id="message-list-container" class="list-item message-list pre-scrollable">
+          </ol> -->
+
+					<div class="row">
+						<ol reversed id="messageList" class="list-item">
 						</ol>
 					</div>
-				  <div class="row message-form">
-						<div class="col-xs-10">
-					  	<input id="sendMessage" type="text" class="form-control" placeholder="Write here.">
-						</div>
-						<div class="col-xs-2">
-							<button id="sendButton" type="button">Send</button>
-						</div>
-				  </div>
+				  <!-- <div class="row message-form">
+				  </div>-->
 				</div>
+        <div class="container background-color">
+          <div class="navbar-fixed-bottom">
+            <div class="col-xs-11">
+              <input id="sendMessage" type="text" class="form-control" placeholder="Write here.">
+            </div>
+            <div class="col-xs-1">
+              <button id="sendButton" type="button" class="justify">Send</button>
+            </div>
+          </div>
+        </div>
 			</div>
 		</div>
 		<script src="/js/socketclient.js" charset="utf-8"></script>
