@@ -1,22 +1,27 @@
 <script src="/js/registrationvalidator.js" charset="utf-8"></script>
-<div class="col-md-offset-4 col-md-4">
-	<form name="register" class="registerForm" action="/auth/register" method="post" onsubmit="return validate()">
-	  <div class="form-group">
-	    <label for="username">Username</label>
-	    <input type="text" class="form-control" name="username" placeholder="Username">
-	  </div>
-		<div class="form-group">
-	    <label for="name">Full Name</label>
-	    <input type="text" class="form-control" name="name" placeholder="Full Name">
-	  </div>
-	  <div class="form-group">
-	    <label for="password">Password</label>
-	    <input type="password" name="password" class="form-control" placeholder="Password">
-	  </div>
-		<div class="form-group">
-	    <label for="passwordConfirmation">Password Confirmation</label>
-	    <input type="password" name="passwordrepeat" class="form-control" placeholder="Password Confirmation">
-	  </div>
-		<input type="submit" name="submit" value="Register" class="btn btn-group-justified">
-	</form>
-</div>
+<div class="row">
+	<div class="container">
+		<div class="jumbotron text-center" style="height: 450px;">
+			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				<form name="register" class="registerForm" action="/auth/register" method="post" onsubmit="return validate()">
+				  <div class="form-group">
+				    <label for="username">Username</label>
+				    <input type="text" class="form-control" name="username" placeholder="Username">
+				  </div>
+					<div class="form-group">
+				    <label for="name">Full Name</label>
+				    <input type="text" class="form-control" name="name" placeholder="Full Name">
+				  </div>
+				  <div class="form-group">
+				    <label for="password">Password</label>
+				    <input type="password" name="password" class="form-control" placeholder="Password">
+				  </div>
+					<div class="form-group">
+				    <label for="passwordConfirmation">Password Confirmation</label>
+				    <input type="password" name="passwordrepeat" class="form-control" placeholder="Password Confirmation">
+				  </div>
+					<input type="submit" name="submit" value="Register" class="btn btn-group-justified">
+				</form>
+			</div>
+		</div>
+	</div>

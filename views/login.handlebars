@@ -1,14 +1,19 @@
 <script src="/js/loginvalidator.js" charset="utf-8"></script>
-<div class="col-md-offset-4 col-md-4">
-	<form name="login" class="loginForm" action="/auth/login" method="post" onsubmit="return validate()">
-		  <div class="form-group">
-		    <label for="username">Username</label>
-		    <input type="username" class="form-control" name="username" placeholder="Username">
-		  </div>
-		  <div class="form-group">
-		    <label for="password">Password</label>
-		    <input type="password" class="form-control" name="password" placeholder="Password">
-		  </div>
-	  <input type="submit" name="submit" class="btn btn-group-justified" value="Login"></button>
-	</form>
-</div>
+<div class="row">
+	<div class="container">
+		<div class="jumbotron text-center" style="height: 300px;">
+			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				<form name="login" class="loginForm" action="/auth/login" method="post" onsubmit="return validate()">
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="username" class="form-control" name="username" placeholder="Username">
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" name="password" placeholder="Password">
+						</div>
+					<input type="submit" name="submit" class="btn btn-group-justified" value="Login"></button>
+				</form>
+			</div>
+		</div>
+	</div>
