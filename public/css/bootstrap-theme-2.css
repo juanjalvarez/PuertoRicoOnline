@@ -272,6 +272,16 @@ th {
   src: url('../fonts/glyphicons-halflings-regular.eot');
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
+
+.card {
+  padding: 20px;
+  border-radius: 10px;
+  border-color: black;
+  border-spacing: 10px;
+}
+.card > img {
+  border-radius: 100px;
+}
 .glyphicon {
   position: relative;
   top: 1px;
@@ -1101,7 +1111,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #008cba;
+  color: black;
   text-decoration: none;
 }
 a:hover,
@@ -4173,6 +4183,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 21px;
   border: 1px solid transparent;
 }
+
+.navbar-text > a {
+	color: white;
+}
+
 @media (min-width: 768px) {
   .navbar {
     border-radius: 0;
@@ -4497,7 +4512,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #333333;
+  background-color: #337ab7;
   border-color: #222222;
 }
 .navbar-default .navbar-brand {
@@ -4515,9 +4530,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #ffffff;
 }
 .navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:active {
   color: #ffffff;
-  background-color: #272727;
+  background-color: #59a1df;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -4947,7 +4963,7 @@ a.badge:focus {
 }
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #008cba;
+  color: #337ab7;
   background-color: #ffffff;
 }
 .list-group-item > .badge {
@@ -4964,7 +4980,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #fafafa;
+  background-color: #dbecf4;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5001,6 +5017,9 @@ a.badge:focus {
   .jumbotron .h1 {
     font-size: 68px;
   }
+}
+.jumbotron > h1 {
+  color: #337ab7;
 }
 .thumbnail {
   display: block;
@@ -5303,7 +5322,7 @@ button.list-group-item {
 .list-group-item.active:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #008cba;
+  background-color: #337ab7;
   border-color: #008cba;
 }
 .list-group-item.active .list-group-item-heading,
