@@ -2,51 +2,100 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PROL Chat</title>
 		<link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" title="no title">
 		<link rel="stylesheet" href="/css/bootstrap-theme.min.css" media="screen" title="no title">
 		<link rel="stylesheet" href="/css/chat.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
 		<script src="/js/jquery.js" charset="utf-8"></script>
 		<script src="/js/socket.io.js" charset="utf-8"></script>
 		<script src="/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/chat.js" charset="utf-8"></script>
   </head>
   <body>
-		<div class="content">
-			<div class="container-fluid">
-				<div class="col-md-3 col-sm-4 col-xs-4 left-bar">
-					<div class="row chat-group-list-container">
-						<a href="/">Home</a>
-					</div>
-					<div class="row chat-group-list-container">
-						<ul class="chat-group-list">
-							{{#each groupList}}
-								<a href="#" id="{{this.group.name}}" group-id="{{this.group._id}}" class="group-list-link">
-									<li class="list-group-item">
-										{{this.group.name}}
-									</li>
-								</a>
-							{{/each}}
-						</ul>
-					</div>
-				</div>
-				<div id="chatView" class="col-md-9 col-xs-8 col-md-offset-3 col-xs-offset-4 container-fluid">
-					<div class="row">
-						<ol reversed id="messageList" class="list-item">
-						</ol>
-					</div>
-				</div>
-        <div class="container background-color">
-          <div class="navbar-fixed-bottom">
-            <div class="col-xs-11">
-              <input id="sendMessage" type="text" class="form-control" placeholder="Write here.">
-            </div>
-            <div class="col-xs-1">
-              <button id="sendButton" type="button" class="justify">Send</button>
-            </div>
+    <!-- My code -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">PR Online</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+						<li><a href="/about">About</a></li>
+            <!-- <li><a href="/user">User</a></li>
+            <li><a href="/group">Group</a></li> -->
+						{{#if auth}}
+							<li><a href="/chat">Chat</a></li>
+						{{/if}}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Test<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/test/messagetest">Message Test</a></li>
+	              <li><a href="/test/cookietest">Cookie Test</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+						{{#unless auth}}
+	            <li><a href="/login">Log in</a></li>
+		          <li><a href="/register">Register</a></li>
+						{{else}}
+							<li>
+								<p class="navbar-text">
+									Hello, <i class="fa fa-user-circle" aria-hidden="true"></i>{{> userlink auth}}
+								</p>
+							</li>
+							<li><a href="/logout">Logout</a></li>
+						{{/unless}}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="wrapper" class"container">
+      <div id="sidebar-wrapper" class="sidebar-nav collapsing">
+        <div class="list-group">
+          <a href="/" class="list-group-item active">Home</a>
+          <ul class="chat-group-list">
+						{{#each groupList}}
+							<a href="#" id="{{this.group.name}}" group-id="{{this.group._id}}" class="group-list-link">
+								<li class="list-group-item">
+									{{this.group.name}}
+								</li>
+							</a>
+						{{/each}}
+					</ul>
+        </div>
+      </div>
+      <div id="chatView" class="chat-view">
+        <div class="list-group">
+					<ol reversed id="messageList" class="list-item">
+					</ol>
+          <!-- <a class="list-group-item list-group-item-action active">
+            <h5 class="list-group-item-heading">List group item heading</h5>
+            <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+          </a> -->
+          <div class="navbar-container">
+            <nav class="navbar-nav navbar-fixed-bottom">
+              <div class="input-group">
+                <input id="sendMessage" type="text" class="form-control" placeholder="Write here...">
+                <span class="input-group-btn">
+                  <button id="sendButton" class="btn btn-secondary" type="button" style="background-color">Send</button>
+                </span>
+              </div>
+            </nav>
           </div>
         </div>
-			</div>
-		</div>
+      </div>
+    </div>
+    <!-- My code -->
 		<script src="/js/socketclient.js" charset="utf-8"></script>
   </body>
 </html>
