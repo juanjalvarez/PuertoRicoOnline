@@ -6,7 +6,8 @@ var currentGroup = null;
 $("#chatView").hide();
 
 function appendComment(data){
-	$('#messageList').append("<li class=\"list-group-item message " + (username === data.author ? 'message-self' : '') + " \">" + (username === data.author ? 'You: ' : data.author + ': ') + data.message + "</li>");
+	$('#messageList').append("<li class=\"list-group-item message " + (username === data.author ? 'message-self' : '') +
+	" \">" + (username === data.author ? 'You: ' : data.author + ': ') + data.message + "</li>");
 }
 
 socket.once('receiveUsername', function(un){

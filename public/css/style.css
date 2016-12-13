@@ -1,3 +1,4 @@
-.wrap-text{
-	text-align: justify;
+.content{
+	padding: 75px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
